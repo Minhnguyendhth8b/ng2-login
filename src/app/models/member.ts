@@ -1,0 +1,30 @@
+export class Member {
+    constructor(
+        public id:string,
+        public firstName:string,
+        public lastName:string,
+        public fullName:string,
+        public gender:number,
+        public dateOfBirth:string,
+        public phone:string,
+        public budget: number,
+        public storeId:string,
+        public lastLogin: string,
+        public frendsFB: Array<Object>,
+        public moneyAmount: number,
+        public noOfConnections: number,
+        public missions: Array<Object>,
+        public assets: Array<string>,
+        public share: Object,
+        public device: Object,
+        public totalSale: number,
+        public totalSatisFiedCustomers: number,
+        public totalSpawnedCustomers: number,
+        public level: number,
+        public rank:string,
+        public created: Date,
+        public updated: Date,
+        public email:string,
+        public emailVerified: boolean
+    ) {}
+}
