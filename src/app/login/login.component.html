@@ -3,16 +3,22 @@
   <form class="form-signin">
     <h2 class="form-signin-heading">Please sign in</h2>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input [(ngModel)]="email" name="email" required type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input [(ngModel)]="password" name="password" required type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox">
-      <label>
+    <input [(ngModel)]="email" name="email" required type="email" id="inputEmail" class="form-control" placeholder="Email address"
+      required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input [(ngModel)]="password" name="password" required type="password" id="inputPassword" class="form-control" placeholder="Password"
+        required>
+        <div class="checkbox">
+          <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
   </form>
-
+  <div class="alert alert-danger" role="alert" *ngIf="isError">
+    <strong>Oh snap!</strong> {{error}}
+  </div>
 </div>
+
+
 <!-- /container -->

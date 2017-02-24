@@ -10,15 +10,25 @@ export class LoginComponent implements OnInit {
   email:string;
   password:string;
   isSubmitted:boolean = false;
+  isError:boolean = false;
+  error: string;
   constructor(private loginService:LoginService, private router:Router) { }
 
   ngOnInit() {
-    
+    this.isError = false;
   }
 
   login() {
     this.loginService.login(this.email, this.password)
-      .subscribe(response => this.router.navigate(['']))
+      .subscribe(response => {
+        if(response.data) {
+          this.router.navigate([''])
+        } else {
+          this.isError = true;
+          this.error = response.error.message;
+        }
+        
+      }, error => {console.log(error)})
   }
 
 }
