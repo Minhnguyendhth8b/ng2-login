@@ -1,4 +1,16 @@
 <div *ngIf="member">
-  Hello {{member.fullName}}
+  <div class="card float-left" style="width: 20rem;">
+    <div class="card-block">
+      <h4 class="card-title">{{member.fullName}}</h4>
+      <p class="card-text">{{member.email}}</p>
+      <ul class="list-group list-group-flush">
+        <a href="" *ngFor="let mission of missions">
+          <li class="list-group-item justify-content-between" data-toggle="tooltip" data-placement="right" data-html="true" ttHtml
+            [criteria]="mission.criteria | json">{{mission.name}} <span class="badge badge-default badge-pill">{{mission.missionComplete}}</span></li>
+        </a>
+      </ul>
+      <p class="card-text">{{member.lastLogin | amTimeAgo}}</p>
+      <button (click)="logOut()" class="btn btn-primary">Log out</button>
+    </div>
+  </div>
 </div>
-<button (click)="logOut()">Logout</button>

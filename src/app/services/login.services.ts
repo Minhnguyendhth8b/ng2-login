@@ -22,6 +22,6 @@ export class LoginService {
                     }
                     return member;
                 })
-                .catch((error:any) => Observable.throw(error || 'Server error'))
+                .catch((error:any) => Observable.throw(error.json() || 'Server error'))
     }
 }

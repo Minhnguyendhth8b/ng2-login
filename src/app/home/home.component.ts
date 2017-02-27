@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Member} from './../models/member';
 
 import {MemberService} from './../services/member.services';
+import {MissionService} from './../services/mission.services';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,11 @@ import {MemberService} from './../services/member.services';
 export class HomeComponent implements OnInit {
 
   member:Member;
-
-  constructor(private router: Router, private memberService:MemberService) { }
+  missions:Array<Object>;
+  constructor(private router: Router, 
+              private memberService:MemberService,
+              private missionService:MissionService  
+            ) { }
 
   ngOnInit() {
     let currentMember = JSON.parse(localStorage.getItem('currentMember'));
@@ -25,6 +29,12 @@ export class HomeComponent implements OnInit {
         .subscribe(mb => {
           this.member = mb;
         console.log(this.member); }, error => {console.log(error)})
+      this.missionService.getListMission(currentMember.accessToken)
+        .subscribe(missions => {
+          missions = missions.filter(mission => mission.complete === true)
+          console.log(missions);
+          this.missions = missions;
+        })
     }
   }
 
